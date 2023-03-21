@@ -1,3 +1,7 @@
+# run 
+```cmd
+yarn start
+```
  ## package json
    - "@react-native-async-storage/async-storage": "^1.17.12", //本地缓存
    - "@react-navigation/native": "^6.1.6", //路由 
