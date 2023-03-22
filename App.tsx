@@ -1,39 +1,21 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native';
+import React from 'react';
+import {useColorScheme} from 'react-native';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
-const Tab = createBottomTabNavigator();
-
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
-  );
-}
+import {StatusBar} from 'react-native';
+import Route from './src/route/Index';
 
 export default function App() {
+  const colorScheme = useColorScheme();
   return (
-    <NavigationContainer>
-      <MyTabs />
+    <NavigationContainer
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <StatusBar translucent barStyle={colorScheme === 'dark' ? "light-content" : "dark-content"} backgroundColor={'rgba(255,255,255,0)'} />
+      <Route />
     </NavigationContainer>
   );
 }
